@@ -1,15 +1,15 @@
 with open("res/day1.txt") as f:
     s = f.read().split('\n')
 
-curr = 50
+curr, curr_dir = 50, 'R'
 count1, count2 = 0, 0
 for dir in s:
-    rot = int(dir[1:])
-    if dir[0] == 'L': curr = (100 - curr) % 100
-    d, curr = divmod(curr + rot, 100)
+    if dir[0] != curr_dir:
+        curr = (100 - curr) % 100
+        curr_dir = dir[0]
+    d, curr = divmod(curr + int(dir[1:]), 100)
+    count1 += int(curr == 0)
     count2 += d
-    if curr == 0: count1 += 1
-    if dir[0] == 'L': curr = (100 - curr) % 100
     
 print("Part 1:", count1)
 print("Part 2:", count2)
