@@ -16,3 +16,6 @@ print("Part 1:", get_joltage(2))
 
 # Part 2
 print("Part 2:", get_joltage(12))
+
+# Golf - 134 chars
+print([sum((int(''.join([(p:=l.index(max(l[p:1+len(l)-n+d]),p)+1,l[p-1])[1]for d in range(n)])))for l in j if~(p:=0))for n in[2,12]])
